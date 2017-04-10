@@ -20,13 +20,16 @@ export class HomeComponent implements OnInit {
 
   getBoosters(numOfBoosters: number) {
       for(var i = 0; i < numOfBoosters; i++) {
-          this.magicService.getBooster().subscribe(data => {
-              this.search = data;
-              var newBooster: Booster = new Booster(this.search.cards);
-              this.boosterList.push(newBooster);
-          });
+          boosterCall();
       }
   }
 
+  boosterCall() {
+    this.magicService.getBooster().subscribe(data => {
+        this.search = data;
+        var newBooster: Booster = new Booster(this.search.cards);
+        this.boosterList.push(newBooster);
+    });
+  }
 
 }
